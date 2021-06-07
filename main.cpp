@@ -1,5 +1,4 @@
 #include <iostream>
-#include <cstdlib>
 
 #define INFINITY 2147483647
 
@@ -24,6 +23,14 @@ public:
             board[i] = new int[size];
         }
     };
+    void deleteBoard(){
+        for (int i = 0; i < size; i++) {
+           delete[] board[i];
+        }
+        delete[] board;
+        board = nullptr;
+    };
+
     void fillWithZeros();
     void print();
 
@@ -299,4 +306,5 @@ int Game::isWin() {
 int main() {
     Game G;
     G.play();
+    G.deleteBoard();
 }
